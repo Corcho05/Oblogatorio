@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Vivienda:Apartamento
+    public class Vivienda : Apartamento
     {
         private int cantDormitorios;
         private int cantBanios;
@@ -22,7 +22,7 @@ namespace Entidades
         public int CantBanios
         {
             get { return cantBanios; }
-            set {cantBanios = value; }
+            set { cantBanios = value; }
         }
 
         public decimal CostoTotal
@@ -56,7 +56,10 @@ namespace Entidades
             get { return EdifContenedor.Nombre; }
         }
 
-        public string TipoApto{ get; }
+        public string TipoApto
+        {
+            get { return "Vivienda"; }
+        }
         public Vivienda() { }
         //Constructor completo o Sobrecaragado
         //Recibe todos los parametros de cada propiedad tanto de la clase base como las propiedades particulares de
@@ -78,7 +81,7 @@ namespace Entidades
         {
             int cantDorm = this.CantDormitorios;
 
-            decimal totalPrecioVenta =  base.calcularPrecioVenta();
+            decimal totalPrecioVenta = base.calcularPrecioVenta();
 
             if (cantDorm >= 1 && cantDorm <= 2)
             {
@@ -87,22 +90,23 @@ namespace Entidades
             else if (cantDorm > 4)
             {
                 totalPrecioVenta += totalPrecioVenta * new decimal(2.0); ;
-            }else
+            }
+            else
             {
                 totalPrecioVenta += totalPrecioVenta * new decimal(1.10);
             }
 
-            if(this.Orientacion== "Norte" || this.Orientacion == "NorEste" || this.Orientacion == "NorOeste")
+            if (this.Orientacion == "Norte" || this.Orientacion == "NorEste" || this.Orientacion == "NorOeste")
             {
                 totalPrecioVenta += totalPrecioVenta * new decimal(1.15);
             }
 
-            if ( this.TieneGaraje)
+            if (this.TieneGaraje)
             {
                 totalPrecioVenta += costoFijo;
             }
 
-                return totalPrecioVenta;
+            return totalPrecioVenta;
         }
     }
 }

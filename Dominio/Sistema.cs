@@ -9,13 +9,13 @@ namespace Entidades
     public class Sistema
     {
         public List<Edificio> ColEdificios { get; private set; }
-       // public List<Apartamento> ColApartamentos { get; private set; }  SE PASA PARA LA CLASE EDIFICIO
+        // public List<Apartamento> ColApartamentos { get; private set; }  SE PASA PARA LA CLASE EDIFICIO
 
         public List<ClienteComprador> ColClientes { get; private set; }
 
         public Sistema()
         {
-            
+
             this.ColEdificios = new List<Edificio>();
             //this.ColApartamentos = new List<Apartamento>();
         }
@@ -63,22 +63,26 @@ namespace Entidades
             return false;
         }
 
-        /*public List<Apartamento> buscarAproRangoPrecio(decimal rangoMenor, decimal rangoMayor)
+        public List<Apartamento> buscarAproRangoPrecio(decimal rangoMenor, decimal rangoMayor)
         {
             List<Apartamento> listaAux = new List<Apartamento>();
-   
 
-            foreach (var apto in ColEdificios)
+
+            foreach (var edi in ColEdificios)
             {
-                if (apto.calcularPrecioVenta() > rangoMenor && apto.calcularPrecioVenta() < rangoMayor)
+                foreach (var apto in edi.ColApartamentos)
                 {
-                    listaAux.Add(apto);
+                    if (apto.calcularPrecioVenta() > rangoMenor && apto.calcularPrecioVenta() < rangoMayor)
+                    {
+                        listaAux.Add(apto);
+                    }
                 }
+
             }
-             
+
             return listaAux;
 
-        }*/
+        }
         public List<Edificio> buscarEdiXOriMetros(int rangoMenor, int rangoMayor, string orientacion)
         {
             List<Edificio> listaEdiAux = new List<Edificio>();
@@ -96,24 +100,26 @@ namespace Entidades
             return listaEdiAux;
         }
 
-        /*public int  existenAptosRango(int rangoMenor, int rangoMayor)
+        public int existenAptosRango(int rangoMenor, int rangoMayor)
         {
             int cantAptos = 0;
 
-            for (int i = 0; i < ColApartamentos.Count; i++)
+            foreach (var edi in ColEdificios)
             {
-               
-                if (ColApartamentos[i].Metraje >= rangoMenor && ColApartamentos[i].Metraje <= rangoMayor)
+                foreach (var apto in edi.ColApartamentos)
                 {
-                    cantAptos++;
+                    if (apto.Metraje >= rangoMenor && apto.Metraje <= rangoMayor)
+                    {
+                        cantAptos++;
 
+                    }
                 }
+
             }
-
             return cantAptos;
-        }  */
+        }
 
-        
+
 
         public bool altaApartamento(Apartamento nuevo)
         {
@@ -126,6 +132,6 @@ namespace Entidades
             }
             return false;
         }
-      
+
     }
 }

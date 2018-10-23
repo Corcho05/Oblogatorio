@@ -69,16 +69,19 @@ namespace Entidades
         #region Métodods
         public Apartamento filtroEdificios(int rangoMenor, int rangoMayor, string orientacion)
         {
-
-            for (int i = 0; i < ColApartamentos.Count; i++)
+            Apartamento apto = null;
+            int i = 0;
+            bool flag = false;
+            while (i < this.ColApartamentos.Count && !flag)
             {
                 if (ColApartamentos[i].Metraje >= rangoMenor && ColApartamentos[i].Metraje <= rangoMayor && ColApartamentos[i].Orientacion == orientacion)
                 {
-                    return ColApartamentos[i];
+                    apto = ColApartamentos[i];
+                    flag = true;
                 }
+                i++;
             }
-
-            return null;
+            return apto;
         }
 
         public bool existeApartamento(Apartamento nuevo)
