@@ -61,8 +61,8 @@ namespace Oblogatorio_P2_V1
                 decimal rangoMenor = Convert.ToDecimal(txtRangoMenorPrecio.Text);
                 decimal rangoMayor = Convert.ToDecimal(txtRangoMayorPrecio.Text);
 
-                grdApartamentos.DataSource = miSistema.buscarAproRangoPrecio(rangoMenor,rangoMayor);
-                grdApartamentos.DataBind();
+                //grdApartamentos.DataSource = miSistema.buscarAproRangoPrecio(rangoMenor,rangoMayor);
+                //grdApartamentos.DataBind();
 
 
             }
@@ -83,7 +83,7 @@ namespace Oblogatorio_P2_V1
 
                 //llamo al método que me devuelve la cantidad de apartamentos que cumplen las condiciones
 
-                int ret = miSistema.existenAptosRango(rangoMenor, rangoMayor);
+                int ret = 0;//miSistema.existenAptosRango(rangoMenor, rangoMayor);
 
                 if (ret > 0)
                 {

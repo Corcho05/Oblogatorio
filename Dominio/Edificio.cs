@@ -11,6 +11,7 @@ namespace Entidades
         #region Atributos
         private string nombre;
         private string direccion;
+        private List<Apartamento> colApartamentos = new List<Apartamento>();
         #endregion
         #region Propiedades 
         public string Nombre
@@ -38,18 +39,67 @@ namespace Entidades
                 direccion = value;
             }
         }
+
+        public List<Apartamento> ColApartamentos
+        {
+            get
+            {
+                return colApartamentos;
+            }
+
+           private set
+            {
+                colApartamentos = value;
+            }
+        }
         #endregion
         #region Constructores
 
-        public Edificio() { }
+        public Edificio()
+        {
+            //this.ColApartamentos = new List<Apartamento>();
+        }
         public Edificio(string nombre, string direccion)
         {
             this.nombre = nombre;
             this.direccion = direccion;
+            //this.ColApartamentos = new List<Apartamento>();
         }
         #endregion
         #region Métodods
-      
+        public Apartamento filtroEdificios(int rangoMenor, int rangoMayor, string orientacion)
+        {
+
+            for (int i = 0; i < ColApartamentos.Count; i++)
+            {
+                if (ColApartamentos[i].Metraje >= rangoMenor && ColApartamentos[i].Metraje <= rangoMayor && ColApartamentos[i].Orientacion == orientacion)
+                {
+                    return ColApartamentos[i];
+                }
+            }
+
+            return null;
+        }
+
+        public bool existeApartamento(Apartamento nuevo)
+        {
+            //Lógica para buscar el apartamento dentro de la lista de los mismos
+            for (int i = 0; i < ColApartamentos.Count; i++)
+            {
+                if (ColApartamentos[i].EdifContenedor.Nombre == nuevo.EdifContenedor.Nombre)
+                {
+                    if (ColApartamentos[i].Numero == nuevo.Numero)
+                    {
+                        return true;
+                    }
+                    else if (ColApartamentos[i].Piso == nuevo.Piso && ColApartamentos[i].Orientacion == nuevo.Orientacion)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         #endregion
     }
 }
