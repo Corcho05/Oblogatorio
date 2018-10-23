@@ -81,7 +81,7 @@ namespace Entidades
         {
             int cantDorm = this.CantDormitorios;
 
-            decimal totalPrecioVenta = base.calcularPrecioVenta();
+            decimal totalPrecioVenta = base.Metraje * base.PrecioBase;
 
             if (cantDorm >= 1 && cantDorm <= 2)
             {

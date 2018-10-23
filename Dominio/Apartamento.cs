@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Apartamento
+    public abstract class Apartamento
     {
         #region Atributos 
         private int piso;
@@ -67,11 +67,11 @@ namespace Entidades
         #endregion
         #region Métodos
         //Método que calcula el precio de venta
-        public virtual decimal calcularPrecioVenta()
-        {
+        public abstract decimal calcularPrecioVenta();
+       // {
             // LÓGICA PARA CÁLCULO DEPENDIENDO DE LAS VARIABLES DESCRITAS EN LA LETRA
-            return this.Metraje * this.PrecioBase;
-        }
+         //   return this.Metraje * this.PrecioBase;
+        //}
         #endregion
 
         #region Constructores

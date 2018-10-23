@@ -58,7 +58,7 @@ namespace Entidades
         }
         public override decimal calcularPrecioVenta()
         {
-            decimal costoTotalVenta = base.calcularPrecioVenta() + (costoFijo * this.Puestos);
+            decimal costoTotalVenta = (base.Metraje * base.PrecioBase) + (costoFijo * this.Puestos);
             if (this.TieneEquipamientos)
             {
 
